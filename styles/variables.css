@@ -1,0 +1,7 @@
+:root {
+    --brand-coca: #D91A2A; /* Rojo Coca-Cola */
+    --brand-zero: #111111; /* Negro Zero */
+    --brand-light: #E0E0E0; /* Gris Light */
+
+    --font-main: "Inter", sans-serif;
+}

@@ -1,0 +1,227 @@
+@media (max-width: 768px) {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* —— Body en formato Grid —— */
+    body {
+        width: 100%;
+        overflow-x: hidden;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    /* Bloquear scroll mientras el loader está activo */
+    body:not(.is-loaded) {
+        height: 100vh;
+        max-height: 100vh;
+        overflow: hidden;
+        touch-action: none;
+    }
+
+    /* Habilitar scroll una vez completado el loader */
+    body.is-loaded {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+    }
+
+    /* Ocultar vista desktop interactiva y elementos no deseados */
+    .container,
+    .side-content,
+    .product-strip {
+        display: none;
+    }
+
+    /* Ocultar navbar y contenido mobile mientras el loader esté activo */
+    body:not(.is-loaded) .navbar,
+    body:not(.is-loaded) .mobile-grid-container {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    body.is-loaded .navbar {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    /* —— Header / Navbar Fixed —— */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 64px;
+        z-index: 1000;
+        padding: 0 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .navbar-content {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .navbar-logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-logo-img {
+        height: 38px;
+        width: auto;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+    }
+
+    .navbar-links {
+        display: flex;
+        list-style: none;
+        gap: 0.85rem;
+        align-items: center;
+    }
+
+    .navbar-links a {
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        opacity: 0.75;
+        padding: 0.35rem 0.6rem;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-links a:hover,
+    .navbar-links a.is-active {
+        opacity: 1;
+    }
+
+    .mobile-grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        margin-top: 64px;
+    }
+
+    .mobile-product-card {
+        min-height: calc(100dvh - 64px);
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        align-items: center;
+        justify-items: center;
+        padding: 2.5rem 1.5rem 3.5rem;
+        box-sizing: border-box;
+        position: relative;
+        scroll-margin-top: 64px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Fondos y paletas por variante */
+    .mobile-product-card.brand-coca {
+        background: radial-gradient(circle at 50% 30%, #ee2737 0%, #c41221 65%, #880914 100%);
+        color: #ffffff;
+    }
+
+    .mobile-product-card.brand-zero {
+        background: radial-gradient(circle at 50% 30%, #292929 0%, #141414 65%, #050505 100%);
+        color: #ffffff;
+    }
+
+    .mobile-product-card.brand-light {
+        background: radial-gradient(circle at 50% 30%, #ffffff 0%, #dedede 60%, #b8b8b8 100%);
+        color: #111111;
+    }
+
+    /* Imagen estática de la lata */
+    .mobile-product-img-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 0;
+    }
+
+    .mobile-product-img {
+        height: 36vh;
+        max-height: 290px;
+        min-height: 200px;
+        width: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 18px 25px rgba(0, 0, 0, 0.45));
+    }
+
+    .mobile-product-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.25rem;
+        width: 100%;
+        max-width: 480px;
+    }
+
+    .mobile-product-info .title-img {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .mobile-product-info .title-img-logo {
+        height: 60px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .mobile-product-info .title-img-type {
+        height: 42px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    /* Filtros para logos según la variante */
+    .mobile-product-card.brand-coca .title-img-logo,
+    .mobile-product-card.brand-zero .title-img-logo {
+        filter: invert(1);
+    }
+
+    .mobile-product-card.brand-zero .title-img-type {
+        filter: invert(1);
+    }
+
+    .mobile-product-card.brand-light .title-img-logo {
+        filter: invert(0);
+    }
+
+    .mobile-product-info .main-content-copy {
+        font-size: 0.98rem;
+        line-height: 1.6;
+        font-weight: 400;
+        padding: 0 0.5rem;
+    }
+
+    .mobile-product-card.brand-coca .main-content-copy,
+    .mobile-product-card.brand-zero .main-content-copy {
+        color: #ffffff;
+    }
+
+    .mobile-product-card.brand-light .main-content-copy {
+        color: #222222;
+    }
+}

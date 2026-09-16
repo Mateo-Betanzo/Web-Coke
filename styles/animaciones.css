@@ -1,0 +1,47 @@
+@keyframes UpToDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes downToUpRotate {
+    0% {
+        transform: rotate(0deg) translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(6deg) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes leftToRight {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes downToUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
