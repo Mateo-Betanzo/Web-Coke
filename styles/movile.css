@@ -1,18 +1,21 @@
+/* ==========================================================================
+   Responsive Styles (Sin crear secciones secundarias)
+   ========================================================================== */
+
 @media (max-width: 768px) {
     html {
         scroll-behavior: smooth;
     }
 
-    /* —— Body en formato Grid —— */
     body {
         width: 100%;
         overflow-x: hidden;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
+        overflow-y: auto;
+        min-height: 100vh;
+        position: relative;
     }
 
-    /* Bloquear scroll mientras el loader está activo */
+    /* Bloquear scroll únicamente mientras el loader está activo */
     body:not(.is-loaded) {
         height: 100vh;
         max-height: 100vh;
@@ -20,35 +23,23 @@
         touch-action: none;
     }
 
-    /* Habilitar scroll una vez completado el loader */
-    body.is-loaded {
-        height: auto;
+    /* Adaptar el container existente a distribución vertical responsiva */
+    .container {
+        position: relative;
+        inset: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
         min-height: 100vh;
-        overflow-y: auto;
+        padding-top: 70px;
+        z-index: 1;
+        grid-template-columns: none;
+        grid-template-rows: none;
+        grid-template-areas: none;
     }
 
-    /* Ocultar vista desktop interactiva y elementos no deseados */
-    .container,
-    .side-content,
-    .product-strip {
-        display: none;
-    }
-
-    /* Ocultar navbar y contenido mobile mientras el loader esté activo */
-    body:not(.is-loaded) .navbar,
-    body:not(.is-loaded) .mobile-grid-container {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-    }
-
-    body.is-loaded .navbar {
-        opacity: 1;
-        visibility: visible;
-        transition: opacity 0.4s ease, visibility 0.4s ease;
-    }
-
-    /* —— Header / Navbar Fixed —— */
+    /* Navbar en versión móvil */
     .navbar {
         position: fixed;
         top: 0;
@@ -61,8 +52,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
@@ -74,154 +66,130 @@
         gap: 0.75rem;
     }
 
-    .navbar-logo {
-        display: flex;
-        align-items: center;
-    }
-
     .navbar-logo-img {
-        height: 38px;
+        height: 36px;
         width: auto;
         object-fit: contain;
-        filter: brightness(0) invert(1);
     }
 
     .navbar-links {
         display: flex;
         list-style: none;
-        gap: 0.85rem;
+        gap: 0.75rem;
         align-items: center;
     }
 
     .navbar-links a {
         text-decoration: none;
-        color: #ffffff;
+        color: var(--text-nav);
         font-size: 0.8rem;
         font-weight: 800;
-        letter-spacing: 0.06em;
-        opacity: 0.75;
-        padding: 0.35rem 0.6rem;
+        letter-spacing: 0.05em;
+        padding: 0.3rem 0.5rem;
         border-radius: 6px;
-        transition: all 0.3s ease;
+        cursor: default;
+        pointer-events: none;
     }
 
-    .navbar-links a:hover,
-    .navbar-links a.is-active {
-        opacity: 1;
-    }
-
-    .mobile-grid-container {
-        display: grid;
-        grid-template-columns: 1fr;
+    /* Main Content en versión móvil */
+    .main-content {
         width: 100%;
-        margin-top: 64px;
-    }
-
-    .mobile-product-card {
-        min-height: calc(100dvh - 64px);
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
-        align-items: center;
-        justify-items: center;
-        padding: 2.5rem 1.5rem 3.5rem;
-        box-sizing: border-box;
-        position: relative;
-        scroll-margin-top: 64px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    /* Fondos y paletas por variante */
-    .mobile-product-card.brand-coca {
-        background: radial-gradient(circle at 50% 30%, #ee2737 0%, #c41221 65%, #880914 100%);
-        color: #ffffff;
-    }
-
-    .mobile-product-card.brand-zero {
-        background: radial-gradient(circle at 50% 30%, #292929 0%, #141414 65%, #050505 100%);
-        color: #ffffff;
-    }
-
-    .mobile-product-card.brand-light {
-        background: radial-gradient(circle at 50% 30%, #ffffff 0%, #dedede 60%, #b8b8b8 100%);
-        color: #111111;
-    }
-
-    /* Imagen estática de la lata */
-    .mobile-product-img-wrapper {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem 0;
-    }
-
-    .mobile-product-img {
-        height: 36vh;
-        max-height: 290px;
-        min-height: 200px;
-        width: auto;
-        object-fit: contain;
-        filter: drop-shadow(0 18px 25px rgba(0, 0, 0, 0.45));
-    }
-
-    .mobile-product-info {
+        padding: 1.5rem 1.25rem 0.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 1.25rem;
-        width: 100%;
-        max-width: 480px;
+        gap: 1rem;
+        box-sizing: border-box;
     }
 
-    .mobile-product-info .title-img {
+    .main-content p {
+        max-width: 100%;
+    }
+
+    .title-img {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.75rem;
+        justify-content: center;
+        gap: 0.5rem;
     }
 
-    .mobile-product-info .title-img-logo {
-        height: 60px;
+    .title-img-logo {
+        height: 65px;
+        max-width: 85%;
         width: auto;
         object-fit: contain;
     }
 
-    .mobile-product-info .title-img-type {
-        height: 42px;
-        width: auto;
-        object-fit: contain;
-    }
-
-    /* Filtros para logos según la variante */
-    .mobile-product-card.brand-coca .title-img-logo,
-    .mobile-product-card.brand-zero .title-img-logo {
-        filter: invert(1);
-    }
-
-    .mobile-product-card.brand-zero .title-img-type {
-        filter: invert(1);
-    }
-
-    .mobile-product-card.brand-light .title-img-logo {
-        filter: invert(0);
-    }
-
-    .mobile-product-info .main-content-copy {
-        font-size: 0.98rem;
-        line-height: 1.6;
+    .main-content-copy {
+        font-size: 0.95rem;
+        line-height: 1.5;
         font-weight: 400;
         padding: 0 0.5rem;
     }
 
-    .mobile-product-card.brand-coca .main-content-copy,
-    .mobile-product-card.brand-zero .main-content-copy {
-        color: #ffffff;
+    /* Side Content (Lata central) en móvil */
+    .side-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex: 1;
+        min-height: 220px;
+        padding: 1rem 0;
+        position: relative;
     }
 
-    .mobile-product-card.brand-light .main-content-copy {
-        color: #222222;
+    .side-content img {
+        width: auto;
+        height: 34vh;
+        max-height: 280px;
+        min-height: 170px;
+        object-fit: contain;
+        filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.35));
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    /* Ocultar la columna blanca lateral en mobile */
+    .side-content div {
+        display: none;
+    }
+
+    /* Footer responsivo */
+    .footer {
+        width: 100%;
+        height: 110px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        background-color: var(--bg-footer);
+        border-radius: 28px 28px 0 0;
+        padding: 0 0.75rem;
+        position: relative;
+        margin-top: auto;
+        box-sizing: border-box;
+    }
+
+    .footer div {
+        width: 28%;
+        max-width: 100px;
+        height: 60px;
+        border-radius: 14px 14px 0 0;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        cursor: default;
+        pointer-events: none;
+        background-color: var(--bg-footer-button);
+    }
+
+    .footer div img {
+        width: 75px;
+        max-width: 115%;
+        position: absolute;
+        bottom: 12px;
+        transform: scale(1) translateY(0) rotate(-5deg);
     }
 }

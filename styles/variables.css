@@ -1,7 +1,16 @@
 :root {
-    --brand-coca: #D91A2A; /* Rojo Coca-Cola */
-    --brand-zero: #111111; /* Negro Zero */
-    --brand-light: #E0E0E0; /* Gris Light */
+
+    --brand-coca: #D91A2A;
+    --brand-zero: #111111;
+    --brand-light: #E0E0E0;
 
     --font-main: "Inter", sans-serif;
+
+    --accent: #D91A2A;
+    --text-nav: #000000;
+    --text-main: #ffffff;
+    --bg-footer-button: #d3d3d3;
+    --bg-loader: #E5232F;
+    --bg-modal-overlay: rgba(0, 0, 0, 0.5);
+    --bg-footer: #ffffff;
 }

@@ -1,24 +1,25 @@
 /**
  * @file main.js
- * @description Punto de entrada de la aplicación. Orquesta la inicialización de la página,
- * la selección de elementos del DOM, la vinculación de eventos de usuario y la coordinación entre módulos.
-*/
+ * @description Orquesta la inicialización de la página, manejo de la animación de carga (loader)
+ * y la interacción de cambio de variante (Original, Zero, Light) entre navbar y footer.
+ */
 
-import { brands } from './brands.js';
-import { updateActiveUI, updateBrandContent } from './features.js';
+const BRAND_IMAGES = {
+  "coca-cola": "./images/coke-original.webp",
+  "coca-cola-zero": "./images/coke-zero.webp",
+  "coca-cola-light": "./images/coke-light.webp"
+};
 
-// DOM Elements
+// Elementos del DOM
 const container = document.querySelector(".container");
-const titleLogo = document.querySelector(".title-img-logo") || document.querySelector(".title-img img:first-child");
-const titleType = document.querySelector(".title-img-type") || document.querySelector(".title-img img:last-child");
-const title = document.querySelector(".main-content-title");
-const copy = document.querySelector(".main-content-copy");
 const sideImage = document.querySelector(".side-content-image");
-const stripItems = document.querySelectorAll(".product-strip-item");
 const navLinks = document.querySelectorAll("[data-brand-link]");
-const logo = document.querySelector(".navbar-logo-img");
-const loader = document.querySelector('.loader');
-const player = document.querySelector('dotlottie-player');
+const loader = document.querySelector(".loader");
+const player = document.querySelector("dotlottie-player");
+
+const boton1 = document.querySelector("#boton1");
+const boton2 = document.querySelector("#boton2");
+const boton3 = document.querySelector("#boton3");
 
 let isAppStarted = false;
 
@@ -26,78 +27,54 @@ function hideLoaderAndStart() {
   if (isAppStarted) return;
   isAppStarted = true;
 
-  if (loader && !loader.classList.contains('hidden')) {
-    loader.classList.add('hidden');
+  if (loader && !loader.classList.contains("hidden")) {
+    loader.classList.add("hidden");
   }
-  document.body.classList.add('is-loaded');
+  document.body.classList.add("is-loaded");
 }
 
 if (player) {
-  player.addEventListener('complete', hideLoaderAndStart);
-  player.addEventListener('error', hideLoaderAndStart);
+  player.addEventListener("complete", hideLoaderAndStart);
+  player.addEventListener("error", hideLoaderAndStart);
 } else {
   hideLoaderAndStart();
 }
 
-// Fallback de seguridad: si no se completa la animación tras 5 segundos, ocultamos el loader y arrancamos de todos modos.
+// Fallback de seguridad tras 5 segundos
 setTimeout(hideLoaderAndStart, 5000);
 
 function switchBrand(brandKey) {
-  const brand = brands[brandKey];
-  if (!brand) return;
+  const imageSrc = BRAND_IMAGES[brandKey];
+  if (!imageSrc) return;
 
-  updateBrandContent(brand, { container, titleLogo, titleType, title, copy, sideImage, brandKey });
-  updateActiveUI(brandKey, { stripItems, navLinks, logo });
+  // Actualizar únicamente la imagen principal de la lata
+  if (sideImage) {
+    sideImage.src = imageSrc;
+    sideImage.alt = `Lata de ${brandKey}`;
+
+    // Reiniciar la animación de la lata al cambiar
+    sideImage.style.animation = "none";
+    void sideImage.offsetWidth;
+    sideImage.style.animation = "";
+  }
+
+  // Actualizar clase activa en los botones del footer
+  if (boton1) boton1.classList.toggle("is-active", brandKey === "coca-cola");
+  if (boton2) boton2.classList.toggle("is-active", brandKey === "coca-cola-zero");
+  if (boton3) boton3.classList.toggle("is-active", brandKey === "coca-cola-light");
 }
 
 function bindInteractions() {
-  stripItems.forEach((item) => {
-    item.addEventListener("click", () => switchBrand(item.dataset.brand));
-  });
-
+  // Interacciones del Navbar y Footer deshabilitadas
   navLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
-      const brandKey = link.dataset.brandLink;
-      const targetId = link.getAttribute("href");
-      const targetSection = document.querySelector(targetId);
-
-      if (window.innerWidth <= 768 && targetSection) {
-        event.preventDefault();
-        targetSection.scrollIntoView({ behavior: "smooth" });
-        updateActiveUI(brandKey, { stripItems, navLinks, logo });
-      } else {
-        event.preventDefault();
-        switchBrand(brandKey);
-      }
+      event.preventDefault();
     });
   });
-
-  // IntersectionObserver para actualizar el enlace activo del navbar según la sección visible al scrollear en móvil
-  if ("IntersectionObserver" in window) {
-    const mobileCards = document.querySelectorAll(".mobile-product-card");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const brandKey = entry.target.dataset.brand;
-            if (brandKey) {
-              updateActiveUI(brandKey, { stripItems, navLinks, logo });
-            }
-          }
-        });
-      },
-      {
-        rootMargin: "-20% 0px -50% 0px",
-        threshold: 0.1
-      }
-    );
-
-    mobileCards.forEach((card) => observer.observe(card));
-  }
 }
 
 function init() {
-  updateActiveUI("coca-cola", { stripItems, navLinks, logo });
+  switchBrand("coca-cola");
   bindInteractions();
 }
 

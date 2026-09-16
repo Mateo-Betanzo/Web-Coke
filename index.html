@@ -19,14 +19,14 @@
                 <img src="./images/header-logo.png" alt="Coca-Cola Logo" class="navbar-logo-img">
             </a>
             <ul class="navbar-links">
-                <li><a href="#coca-cola" data-brand-link="coca-cola">ORIGINAL</a></li>
-                <li><a href="#coca-cola-zero" data-brand-link="coca-cola-zero">ZERO</a></li>
-                <li><a href="#coca-cola-light" data-brand-link="coca-cola-light">LIGHT</a></li>
+                <li><a href="#">ORIGINAL</a></li>
+                <li><a href="#">ZERO</a></li>
+                <li><a href="#">LIGHT</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Main Content Desktop -->
+    <!-- Main Content -->
     <section class="container" data-brand="coca-cola">
         <section class="main-content">
             <div class="title-img">
@@ -44,84 +44,34 @@
             <div></div>
         </section>
 
-        <section class="product-strip">
-            <button class="product-strip-item is-active" type="button" data-brand="coca-cola"
-                aria-label="Ver Coca-Cola Original">
+        <section class="footer">
+            <div id="boton1">
                 <img src="./images/coke-original.webp" alt="Lata Coca-Cola Original">
-            </button>
+            </div>
 
-            <button class="product-strip-item" type="button" data-brand="coca-cola-zero"
-                aria-label="Ver Coca-Cola Zero">
+            <div id="boton2">
                 <img src="./images/coke-zero.webp" alt="Lata Coca-Cola Zero">
-            </button>
+            </div>
 
-            <button class="product-strip-item" type="button" data-brand="coca-cola-light"
-                aria-label="Ver Coca-Cola Light">
+            <div id="boton3">
                 <img src="./images/coke-light.webp" alt="Lata Coca-Cola Light">
-            </button>
+            </div>
         </section>
     </section>
-
-    <!-- Mobile Grid: 3 tipos de Coca-Cola estáticas con sus imágenes y descripciones -->
-    <main class="mobile-grid-container">
-        <!-- Coca-Cola Original -->
-        <section class="mobile-product-card brand-coca" id="coca-cola" data-brand="coca-cola">
-            <div class="mobile-product-img-wrapper">
-                <img class="mobile-product-img" src="./images/coke-original.webp" alt="Lata de Coca-Cola Original">
-            </div>
-            <div class="mobile-product-info">
-                <div class="title-img">
-                    <img class="title-img-logo" src="./images/logo-coke.webp" alt="Logo Coca-Cola">
-                    <img class="title-img-type" src="./images/logo-classic.png" alt="Logo Classic">
-                </div>
-                <p class="main-content-copy">
-                    El sabor original que definió las gaseosas. Caramelo, burbujas y ese rojo inconfundible en una lata lista para refrescar.
-                </p>
-            </div>
-        </section>
-
-        <!-- Coca-Cola Zero -->
-        <section class="mobile-product-card brand-zero" id="coca-cola-zero" data-brand="coca-cola-zero">
-            <div class="mobile-product-img-wrapper">
-                <img class="mobile-product-img" src="./images/coke-zero.webp" alt="Lata de Coca-Cola Zero">
-            </div>
-            <div class="mobile-product-info">
-                <div class="title-img">
-                    <img class="title-img-logo" src="./images/logo-coke.webp" alt="Logo Coca-Cola">
-                    <img class="title-img-type" src="./images/logo-zero.png" alt="Logo Zero">
-                </div>
-                <p class="main-content-copy">
-                    Todo el sabor original sin azúcar. Una lata negra, elegante y con toques rojos, perfecta para disfrutar sin culpas.
-                </p>
-            </div>
-        </section>
-
-        <!-- Coca-Cola Light -->
-        <section class="mobile-product-card brand-light" id="coca-cola-light" data-brand="coca-cola-light">
-            <div class="mobile-product-img-wrapper">
-                <img class="mobile-product-img" src="./images/coke-light.webp" alt="Lata de Coca-Cola Light">
-            </div>
-            <div class="mobile-product-info">
-                <div class="title-img">
-                    <img class="title-img-logo" src="./images/logo-coke.webp" alt="Logo Coca-Cola">
-                    <img class="title-img-type" src="./images/logo-light.png" alt="Logo Light">
-                </div>
-                <p class="main-content-copy">
-                    Sabor ligero y refrescante. La clásica lata plateada que te acompaña en tus momentos de descanso.
-                </p>
-            </div>
-        </section>
-    </main>
 
     <!-- Loader -->
     <section class="loader">
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
-            type="module"></script>
+            type="module">
+        </script>
 
         <dotlottie-player src="./animations/98e722d9-3f68-496a-b44b-55f23e4e8098.json" background="transparent"
             speed="1" style="width: 400px; height: 400px;" autoplay>
         </dotlottie-player>
     </section>
+
+    <!-- Modal -->
+     <section class="modal hidden"></section>
 </body>
 
 </html>
