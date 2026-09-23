@@ -97,13 +97,6 @@ body:not(.is-loaded) .footer div {
     padding: 0 4rem;
 }
 
-/* Mediaquery para pantallas desktop pequeñas */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .main-content {
-        justify-content: start;
-    }
-}
-
 .main-content p {
     max-width: 600px;
 }
@@ -324,4 +317,19 @@ body:not(.is-loaded) .footer div {
     transform: translateX(-40%) scale(0.8);
     opacity: 0.5;
     z-index: 0;
+}
+
+@media (max-height: 700px) {
+    .title-img-logo {
+        height: 80px;
+    }
+
+    .main-content-copy {
+        font-size: 0.95rem;
+    }
+
+    .footer div img {
+        width: 100px;
+        bottom: 15px;
+    }
 }
