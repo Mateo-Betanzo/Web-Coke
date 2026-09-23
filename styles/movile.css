@@ -52,10 +52,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .navbar-content {
@@ -165,7 +161,7 @@
         justify-content: space-around;
         align-items: flex-end;
         background-color: var(--bg-footer);
-        border-radius: 28px 28px 0 0;
+        border-radius: 100% 100% 0 0;
         padding: 0 0.75rem;
         position: relative;
         margin-top: auto;

@@ -17,9 +17,55 @@ const navLinks = document.querySelectorAll("[data-brand-link]");
 const loader = document.querySelector(".loader");
 const player = document.querySelector("dotlottie-player");
 
+
+
+/* Video ------------------------------------------------------------------- */
+const modal1 = document.querySelector("#modal1");
+const modal2 = document.querySelector("#modal2");
+const modal3 = document.querySelector("#modal3");
+
 const boton1 = document.querySelector("#boton1");
 const boton2 = document.querySelector("#boton2");
 const boton3 = document.querySelector("#boton3");
+
+const close1 = document.querySelector("#modal1 .modal__content-close");
+const close2 = document.querySelector("#modal2 .modal__content-close");
+const close3 = document.querySelector("#modal3 .modal__content-close");
+
+
+boton1.addEventListener("click", () => {
+  modal1.classList.remove("hidden");
+  modal1.classList.add("visible");
+})
+
+boton2.addEventListener("click", () => {
+  modal2.classList.remove("hidden");
+  modal2.classList.add("visible");
+})
+
+boton3.addEventListener("click", () => {
+  modal3.classList.remove("hidden");
+  modal3.classList.add("visible");
+})
+
+close1.addEventListener("click", () => {
+  modal1.classList.add("hidden");
+  modal1.classList.remove("visible");
+})
+
+close2.addEventListener("click", () => {
+  modal2.classList.add("hidden");
+  modal2.classList.remove("visible");
+})
+
+close3.addEventListener("click", () => {
+  modal3.classList.add("hidden");
+  modal3.classList.remove("visible");
+})
+
+/* ------------------------------------------------------------------------- */
+
+
 
 let isAppStarted = false;
 

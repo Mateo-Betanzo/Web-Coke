@@ -61,8 +61,7 @@
 
     <!-- Loader -->
     <section class="loader">
-        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
-            type="module">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module">
         </script>
 
         <dotlottie-player src="./animations/98e722d9-3f68-496a-b44b-55f23e4e8098.json" background="transparent"
@@ -71,7 +70,104 @@
     </section>
 
     <!-- Modal -->
-     <section class="modal hidden"></section>
+    <section class="modal hidden" id="modal1">
+        <div class="modal__content" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="modal__content-close icon icon-tabler icons-tabler-outline icon-tabler-x">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M18 6l-12 12" />
+                <path d="M6 6l12 12" />
+            </svg>
+
+            <div class="modal__content--slider">
+                <input type="radio" name="slider-1" id="m1-radio-1" checked>
+                <input type="radio" name="slider-1" id="m1-radio-2">
+                <input type="radio" name="slider-1" id="m1-radio-3">
+
+
+                <div class="cards">
+                    <label for="m1-radio-1" class="card">
+                        <img src="./images/slider/original-1.webp" alt="foto cocacola original">
+                    </label>
+
+                    <label for="m1-radio-2" class="card">
+                        <img src="./images/slider/original-2.webp" alt="foto cocacola original">
+                    </label>
+
+                    <label for="m1-radio-3" class="card">
+                        <img src="./images/slider/original-3.webp" alt="foto cocacola original">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="modal hidden" id="modal2">
+        <div class="modal__content">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="modal__content-close icon icon-tabler icons-tabler-outline icon-tabler-x">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M18 6l-12 12" />
+                <path d="M6 6l12 12" />
+            </svg>
+
+            <div class="modal__content--slider">
+                <input type="radio" name="slider-2" id="m2-radio-1" checked>
+                <input type="radio" name="slider-2" id="m2-radio-2">
+                <input type="radio" name="slider-2" id="m2-radio-3">
+
+
+                <div class="cards">
+                    <label for="m2-radio-1" class="card">
+                        <img src="./images/slider/zero-1.webp" alt="foto cocacola zero">
+                    </label>
+
+                    <label for="m2-radio-2" class="card">
+                        <img src="./images/slider/zero-2.webp" alt="foto cocacola zero">
+                    </label>
+
+                    <label for="m2-radio-3" class="card">
+                        <img src="./images/slider/zero-3.webp" alt="foto cocacola zero">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="modal hidden" id="modal3">
+        <div class="modal__content">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="modal__content-close icon icon-tabler icons-tabler-outline icon-tabler-x">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M18 6l-12 12" />
+                <path d="M6 6l12 12" />
+            </svg>
+
+            <div class="modal__content--slider">
+                <input type="radio" name="slider-3" id="m3-radio-1" checked>
+                <input type="radio" name="slider-3" id="m3-radio-2">
+                <input type="radio" name="slider-3" id="m3-radio-3">
+
+
+                <div class="cards">
+                    <label for="m3-radio-1" class="card">
+                        <img src="./images/slider/light-1.webp" alt="foto cocacola light">
+                    </label>
+
+                    <label for="m3-radio-2" class="card">
+                        <img src="./images/slider/light-2.webp" alt="foto cocacola light">
+                    </label>
+
+                    <label for="m3-radio-3" class="card">
+                        <img src="./images/slider/light-3.webp" alt="foto cocacola light">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
